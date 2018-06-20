@@ -9,9 +9,6 @@
       "projectType": "application",
       "prefix": "app",
       "schematics": {
-        "@schematics/angular:component": {
-          "styleext": "scss"
-        }
       },
       "architect": {
         "build": {
@@ -24,12 +21,12 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/js"
+              "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "src/styles.css"
+              "src/assets/lib/material-design-icons/css/material-design-iconic-font.css",
+              "src/assets/lib/bootstrap/dist/css/bootstrap.css",
+              "src/assets/css/styles.css"
             ],
             "scripts": [
               "src/assets/lib/jquery/jquery.min.js",
