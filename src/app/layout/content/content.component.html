@@ -1,17 +1,16 @@
 <div class="be-content">
   <div class="page-head">
     <h2 class="page-head-title">Content Page</h2>
-<!--
-    <nav aria-label="breadcrumb" role="navigation">
-      <ol class="breadcrumb page-head-nav">
-        <li class="breadcrumb-item"><a>Home</a></li>
-        <li class="breadcrumb-item"><a>Pages</a></li>
-        <li class="breadcrumb-item active">Blank Page Header</li>
-      </ol>
-    </nav>
--->
   </div>
   <div class="main-content container-fluid">
-    <h3 class="text-center">Content goes here!</h3>
+    <div class="row">
+      <div class="col-5">
+        <app-down-arrow></app-down-arrow>        
+      </div>
+      <div class="col-5">
+        <app-up-arrow></app-up-arrow>
+      </div>
+    </div>
+    <h3 class="text-center"><span [innerHTML]="content.valueA"></span> goes here!</h3>
   </div>
 </div>

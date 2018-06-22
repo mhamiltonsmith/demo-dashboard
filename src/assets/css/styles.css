@@ -8401,8 +8401,7 @@ canvas {
     padding: 0; }
     .be-left-sidebar .sidebar-elements .divider {
       padding: 20px 20px 0;
-      color: #b0b0b0;
-      line-height: 30px;
+      color: #b0b0b0;      line-height: 30px;
       font-weight: 600;
       text-transform: uppercase;
       font-size: .8462rem; }
@@ -8555,7 +8554,6 @@ canvas {
           .be-collapsible-sidebar-collapsed .be-left-sidebar .sidebar-elements > li.open > ul.visible {
             display: table; } }
     .be-left-sidebar .sidebar-elements li.parent > a:before {
-      display: none;
       content: '\f2f2';
       float: right;
       font-family: "Material Icons";

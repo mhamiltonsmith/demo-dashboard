@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+declare const App: any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,6 +9,10 @@ import { Component } from '@angular/core';
     './app.component.css'
   ]
 })
+
 export class AppComponent {
-  title = 'app';
+  title = 'DemoDashboard';
+
+  constructor() {
+  }
 }

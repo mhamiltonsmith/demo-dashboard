@@ -5,8 +5,18 @@
         <div class="left-sidebar-content">
           <ul class="sidebar-elements">
             <li class="divider">Menu</li>
-            <li class="parent"><a [routerLink] = "['/content']"><i class="icon mdi mdi-shape"></i><span>Content</span></a></li>
-            <li class="parent"><a [routerLink] = "['/admin']"><i class="icon mdi mdi-developer-board"></i><span>Admin</span></a></li>
+            <li class="parent"><a><i class="icon mdi mdi-shape"></i><span>Content</span></a>
+              <ul class="sub-menu">
+                <li><a [routerLink] = "['/content']">Content Page</a>
+                </li>
+              </ul>
+            </li>
+            <li class="parent"><a><i class="icon mdi mdi-developer-board"></i><span>Admin</span></a>
+              <ul class="sub-menu">
+                <li><a [routerLink] = "['/admin']">Admin Page</a>
+                </li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
