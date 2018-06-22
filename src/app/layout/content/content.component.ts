@@ -10,6 +10,7 @@ declare var App: any;
 })
 export class ContentComponent implements OnInit, AfterViewInit {
   content = content
+  title = "Passports"
 
   constructor() { }
 

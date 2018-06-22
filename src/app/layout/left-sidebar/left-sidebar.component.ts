@@ -12,6 +12,8 @@ declare const App: any;
 })
 export class LeftSidebarComponent implements OnInit {
 
+  subTitle = "Passports"
+
   constructor() { 
   }
 

@@ -1,16 +1,38 @@
 <div class="be-content">
   <div class="page-head">
-    <h2 class="page-head-title">Content Page</h2>
+    <h2 class="page-head-title">{{ title }}</h2>
   </div>
   <div class="main-content container-fluid">
     <div class="row">
-      <div class="col-5">
-        <app-down-arrow></app-down-arrow>        
+      <div class="col-12 col-lg-6 col-xl-3">
+        <div class="widget widget-tile">
+          <div id="spark1" class="chart sparkline">
+          </div>
+          <div class="data-info">
+            <div class="desc">Applications
+            </div>
+            <div class="value">
+              <app-up-arrow></app-up-arrow>
+              <span data-toggle="counter" data-end="113" class="number" [innerHTML]="content.valueB">0</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-5">
-        <app-up-arrow></app-up-arrow>
+      <div class="col-12 col-lg-6 col-xl-3">
+        <div class="widget widget-tile">
+          <div id="spark1" class="chart sparkline">
+          </div>
+          <div class="data-info">
+            <div class="desc">Approvals
+            </div>
+            <div class="value">
+              <app-down-arrow></app-down-arrow>
+              <span data-toggle="counter" data-end="113" class="number" [innerHTML]="content.valueC">0</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <h3 class="text-center"><span [innerHTML]="content.valueA"></span> goes here!</h3>
+    <h3 class="text-center"><span [innerHTML]="content.valueA"></span></h3>
   </div>
 </div>

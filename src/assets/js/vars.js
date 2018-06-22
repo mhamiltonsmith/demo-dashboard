@@ -1,3 +1,5 @@
 var content = {
-   valueA : "TeSt CoNtEnT"
+   valueA : "This is content from a javascript file",
+   valueB : "150",
+   valueC : "256"
 };

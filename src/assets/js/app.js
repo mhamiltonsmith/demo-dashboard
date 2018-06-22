@@ -270,7 +270,6 @@ var App = (function () {
         var $li = $el.parent();
         var $subMenu = $el.next();
         var isFirstLevel = $el.parents().eq(1).hasClass('sidebar-elements');
-	console.log("Click detected!");
 
         // Get the open menus
         $open = $li.siblings(".open");
