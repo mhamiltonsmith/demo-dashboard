@@ -14,6 +14,13 @@ export class ContentComponent implements OnInit, AfterViewInit {
 
   constructor() { }
 
+  getDifference(valueA: number, valueB: number): string {
+    return (valueB - valueA).toFixed(2).replace(/[.,]00$/, "");
+  }
+  getPercentageChange(valueA: number, valueB: number): string {
+    return ((valueB - valueA)/valueA).toFixed(2).replace(/[.,]00$/, "");
+  }
+
   ngOnInit() {
   }
 

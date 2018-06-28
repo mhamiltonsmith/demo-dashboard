@@ -1,0 +1,130 @@
+.up-arrow-container {
+ width: 15px;
+ padding-bottom: 0px;
+ padding-left: 0px;
+ padding-right: 0px;
+ display: block;
+ transform: translateY(-0.3rem) scale(0.3);
+}
+
+.down-arrow-container {
+ width: 15px; 
+ padding-top: 0;
+ padding-bottom: 0px;
+ padding-left: 0px;
+ padding-right: 0px;
+ display: block;
+ transform: translateY(-2.5rem) scale(0.3);
+}
+
+.down-chevron {
+  position: absolute;
+  width: 3.5rem;
+  height: 0.8rem;
+  opacity: 1;
+  transform: scale(0.3);
+  animation: move-down-chevron 3s ease-out infinite;
+}
+
+.down-chevron:first-child {
+  animation: move-down-chevron 3s ease-out 1s infinite;
+}
+
+.down-chevron:nth-child(2) {
+  animation: move-down-chevron 3s ease-out 2s infinite;
+}
+
+.down-chevron:before,
+.down-chevron:after{
+ content: '';
+ position: absolute;
+ top: 0;
+ height: 100%;
+ width: 50%;
+ background: #bc2727;
+}
+
+.down-chevron:before {
+ left: 0;
+ transform: skewY(30deg);
+}
+
+.down-chevron:after {
+ right: 0;
+ width: 50%;
+ transform: skewY(-30deg);
+}
+
+@keyframes move-down-chevron {
+ 25% {
+  opacity: 1;
+	}
+ 33.3% {
+  opacity: 1;
+  transform: translateY(3.8rem);
+ }
+ 66.6% {
+  opacity: 1;
+  transform: translateY(5.2rem);
+ }
+ 100% {
+  opacity: 0;
+  transform: translateY(8rem) scale(0.5);
+ }
+}
+
+.up-chevron {
+  position: absolute;
+  width: 3.5rem;
+  height: 0.8rem;
+  opacity: 1;
+  transform: scale(0.3);
+  animation: move-up-chevron 3s ease-out infinite;
+}
+
+.up-chevron:first-child {
+  animation: move-up-chevron 3s ease-out 1s infinite;
+}
+
+.up-chevron:nth-child(2) {
+  animation: move-up-chevron 3s ease-out 2s infinite;
+}
+
+.up-chevron:before,
+.up-chevron:after{
+ content: '';
+ position: absolute;
+ top: 0;
+ height: 100%;
+ width: 50%;
+ background: #1a9918;
+}
+
+.up-chevron:before {
+ left: 0;
+ transform: skewY(-30deg);
+}
+
+.up-chevron:after {
+ right: 0;
+ width: 50%;
+ transform: skewY(30deg);
+}
+
+@keyframes move-up-chevron {
+ 25% {
+  opacity: 1;
+	}
+ 33.3% {
+  opacity: 1;
+  transform: translateY(-3.8rem);
+ }
+ 66.6% {
+  opacity: 1;
+  transform: translateY(-5.2rem);
+ }
+ 100% {
+  opacity: 0;
+  transform: translateY(-8rem) scale(0.5);
+ }
+}

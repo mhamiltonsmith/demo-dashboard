@@ -27,14 +27,30 @@
               "src/assets/lib/bootstrap/dist/css/bootstrap.css",
               "src/assets/css/styles.css",
               "src/assets/lib/material-design-icons/css/material-design-iconic-font.css",
+              "src/assets/css/app_mod.css",
               "src/assets/css/arrows.css"
             ],
             "scripts": [
               "src/assets/lib/jquery/jquery.min.js",
-              "src/assets/js/vars.js",
               "src/assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js",
               "src/assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "src/assets/js/app.js"
+              "src/assets/js/vars.js",
+              "src/assets/js/app.js",
+              "src/assets/lib/jquery-flot/jquery.flot.js",
+              "src/assets/lib/jquery-flot/jquery.flot.pie.js",
+              "src/assets/lib/jquery-flot/jquery.flot.time.js",
+              "src/assets/lib/jquery-flot/jquery.flot.resize.js",
+              "src/assets/lib/jquery-flot/plugins/jquery.flot.orderBars.js",
+              "src/assets/lib/jquery-flot/plugins/curvedLines.js",
+              "src/assets/lib/jquery-flot/plugins/jquery.flot.tooltip.js",
+              "src/assets/lib/jquery.sparkline/jquery.sparkline.min.js",
+              "src/assets/lib/countup/countUp.min.js",
+              "src/assets/lib/jquery-ui/jquery-ui.min.js",
+              "src/assets/js/app-dashboard.js",
+              "src/assets/js/app-charts-sparkline.js",
+              "src/assets/lib/jquery.sparkline/jquery.sparkline.min.js",
+              "src/assets/lib/chartjs/Chart.min.js",
+              "src/assets/js/app-charts-chartjs.js"
             ]
           },
           "configurations": {

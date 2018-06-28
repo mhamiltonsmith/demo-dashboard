@@ -1,19 +1,26 @@
 <div class="be-content">
-  <div class="page-head">
-    <h2 class="page-head-title">{{ title }}</h2>
-  </div>
   <div class="main-content container-fluid">
     <div class="row">
       <div class="col-12 col-lg-6 col-xl-3">
         <div class="widget widget-tile">
-          <div id="spark1" class="chart sparkline">
-          </div>
           <div class="data-info">
+            <div>
             <div class="desc">Applications
             </div>
-            <div class="value">
-              <app-up-arrow></app-up-arrow>
-              <span data-toggle="counter" data-end="113" class="number" [innerHTML]="content.valueB">0</span>
+              <div class="widget-counter-group widget-counter-group-right">
+                <div class="counter counter-big">           
+                  <app-up-arrow></app-up-arrow>
+                </div>
+                <div class="counter counter-big">           
+                  <div class="value" [innerHTML]="content.valueB2">0</div>
+                  <div class="desc" style="color:green;font-weight:bold;">
+                    <span [innerHTML]="getDifference(content.valueB1, content.valueB2)">0</span>
+                    <span>,&nbsp;</span>
+                    <span [innerHTML]="getPercentageChange(content.valueB1, content.valueB2)">0</span>
+                    <span>%</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -27,7 +34,7 @@
             </div>
             <div class="value">
               <app-down-arrow></app-down-arrow>
-              <span data-toggle="counter" data-end="113" class="number" [innerHTML]="content.valueC">0</span>
+              <span data-toggle="counter" data-end="113" class="number" [innerHTML]="getDifference(content.valueC1, content.valueC2)">0</span>
             </div>
           </div>
         </div>

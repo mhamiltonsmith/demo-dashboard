@@ -12,7 +12,7 @@ declare const App: any;
 })
 export class LeftSidebarComponent implements OnInit {
 
-  subTitle = "Passports"
+  subTitle = "Dashboard"
 
   constructor() { 
   }

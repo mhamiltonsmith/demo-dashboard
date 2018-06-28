@@ -365,23 +365,23 @@ var App = (function () {
     }
 
     //CounterUp Init
-    counter();
+//    counter();
 
     //Loader show
-    toggleLoader();
+//    toggleLoader();
 
     //Row 1
-    sparklines();
+//    sparklines();
 
 	  //Row 2
-    mainChart();
+//    mainChart();
 
 	  //Row 4
-    topSales();
-    calendar();
+//    topSales();
+//    calendar();
 
     //Row 5
-    map();
+//    map();
 
   };
 
