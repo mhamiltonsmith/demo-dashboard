@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-accordion-col',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./accordion-col.component.css']
 })
 export class AccordionColComponent implements OnInit {
+
+  @Input() data: any;
 
   constructor() { }
 

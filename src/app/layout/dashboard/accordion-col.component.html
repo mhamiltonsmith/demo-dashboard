@@ -1,3 +1,5 @@
-<p>
-  accordion-col works!
-</p>
+<h2 class="page-head-description" style="font-size:1.5rem;" [innerHTML]="data.name"></h2>
+<div id="data.accordionId" class="accordion">
+  <app-accordion-row *ngFor="let row of data.rowData" [data]="row">
+  </app-accordion-row>
+</div>

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CounterWidgetComponent } from './counter-widget.component';
+import { AccordionComponent } from './accordion.component';
 
-describe('CounterWidgetComponent', () => {
-  let component: CounterWidgetComponent;
-  let fixture: ComponentFixture<CounterWidgetComponent>;
+describe('AccordionComponent', () => {
+  let component: AccordionComponent;
+  let fixture: ComponentFixture<AccordionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CounterWidgetComponent ]
+      declarations: [ AccordionComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CounterWidgetComponent);
+    fixture = TestBed.createComponent(AccordionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

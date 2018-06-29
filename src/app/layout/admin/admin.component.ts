@@ -9,6 +9,8 @@ declare var App: any;
 })
 export class AdminComponent implements OnInit, AfterViewInit {
 
+  message = "Admin tools go here"
+
   constructor() { }
 
   ngOnInit() {

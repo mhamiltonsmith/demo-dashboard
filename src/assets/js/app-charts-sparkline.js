@@ -55,6 +55,95 @@ var App = (function () {
 	      lineWidth: 1.15
 	    });
 
+	    $('#spark-trv-ytd').sparkline([20, 18, 12, 28, 6, 10, 19, 7, 2, 15, 17, 13],{
+	      type: 'bar',
+	      width: '85',
+	      height: '35',
+	      barWidth: 3,
+	      barSpacing: 3,
+	      chartRangeMin: 0,
+	      barColor: color1
+	    });
+
+	    $('#spark-trv-wtd').sparkline([12, 5, 10, 20, 8, 1, 9, 22, 23, 28, 18, 3], {
+	      type: 'bar',
+	      width: '85',
+	      height: '35',
+	      barWidth: 3,
+	      barSpacing: 3,
+	      chartRangeMin: 0,
+	      barColor: color2
+	    });
+
+	    $('#spark-trv-rank').sparkline([19, 1, 28, 5, 16, 21, 29, 27, 26, 6, 3, 20], {
+	      type: 'bar',
+	      width: '85',
+	      height: '35',
+	      barWidth: 3,
+	      barSpacing: 3,
+	      chartRangeMin: 0,
+	      barColor: color3
+	    });
+
+	    $('#spark-sp-ytd').sparkline([10, 3, 1, 26, 17, 12, 8, 29, 5, 6, 27, 19], {
+	      type: 'bar',
+	      width: '85',
+	      height: '35',
+	      barWidth: 3,
+	      barSpacing: 3,
+	      chartRangeMin: 0,
+	      barColor: color1
+	    });
+
+	    $('#spark-sp-wtd').sparkline([2, 8, 21, 9, 19, 13, 12, 5, 15, 18, 1, 20], {
+	      type: 'bar',
+	      width: '85',
+	      height: '35',
+	      barWidth: 3,
+	      barSpacing: 3,
+	      chartRangeMin: 0,
+	      barColor: color2
+	    });
+
+	    $('#spark-sp-rank').sparkline([8, 22, 20, 10, 21, 6, 26, 28, 4, 11, 24, 16], {
+	      type: 'bar',
+	      width: '85',
+	      height: '35',
+	      barWidth: 3,
+	      barSpacing: 3,
+	      chartRangeMin: 0,
+	      barColor: color3
+	    });
+
+	    $('#spark-wp-ytd').sparkline([26, 5, 17, 7, 9, 21, 18, 15, 1, 2, 28, 8], {
+	      type: 'bar',
+	      width: '85',
+	      height: '35',
+	      barWidth: 3,
+	      barSpacing: 3,
+	      chartRangeMin: 0,
+	      barColor: color1
+	    });
+
+	    $('#spark-wp-wtd').sparkline([16, 29, 21, 13, 4, 27, 14, 1, 12, 28, 24, 15], {
+	      type: 'bar',
+	      width: '85',
+	      height: '35',
+	      barWidth: 3,
+	      barSpacing: 3,
+	      chartRangeMin: 0,
+	      barColor: color2
+	    });
+
+	    $('#spark-wp-rank').sparkline([4, 16, 29, 9, 3, 7, 11, 6, 13, 18, 26, 22], {
+	      type: 'bar',
+	      width: '85',
+	      height: '35',
+	      barWidth: 3,
+	      barSpacing: 3,
+	      chartRangeMin: 0,
+	      barColor: color3
+	    });
 
 		//Change default charts color (Read the official docs for more info)
 		//This change the default sparkline colors, but you can change them individually to each chart
