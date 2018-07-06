@@ -1,0 +1,8 @@
+<div id="accordion">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-6 col-xl-4" *ngFor="let doc of office_data.travelDocs">
+      <app-accordion-col [travel_doc]="doc" [doc_names]="doc_names">
+      </app-accordion-col>
+    </div>
+  </div>
+</div>

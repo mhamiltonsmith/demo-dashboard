@@ -1,27 +1,26 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 declare var numeral: any;
 
 @Component({
-  selector: 'app-accordion-row',
-  templateUrl: './accordion-row.component.html',
-  styleUrls: ['./accordion-row.component.css']
+  selector: 'app-change-widget',
+  templateUrl: './change-widget.component.html',
+  styleUrls: ['../../../../assets/css/arrows_mod.css']
 })
-export class AccordionRowComponent implements OnInit, AfterViewInit {
+export class ChangeWidgetComponent implements OnInit {
 
-  @Input() data: any;
+  @Input() term:      any;
   numeral = numeral;
 
-
-  getDifference(valueA: number, valueB: number): number {
-    return (valueB - valueA);
+  getDifference(previous: number, current: number): number {
+    return (current - previous);
   }
-  getPercentageChange(valueA: number, valueB: number): number {
-    return (((valueB - valueA)/valueA)*100);
+  getPercentageChange(previous: number, current: number): number {
+    return (((current - previous)/previous)*100);
   }
 
-  isIncreasing(valueA: number, valueB: number): boolean {
-    if (valueA < valueB) {
+  isIncreasing(previous: number, current: number): boolean {
+    if (previous < current) {
       return true;
     } else {
       return false;
@@ -36,6 +35,7 @@ export class AccordionRowComponent implements OnInit, AfterViewInit {
       return " (+" + numeral(this.getPercentageChange(data.previous, data.current)).format('0.0a') + "%)";
     }
   }
+
   amountChange(data): string {
     var aChange = this.getDifference(data.previous, data.current)
     if (aChange < 0) {
@@ -53,13 +53,9 @@ export class AccordionRowComponent implements OnInit, AfterViewInit {
     }
   }
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  ngAfterViewInit() {
   }
 
 }

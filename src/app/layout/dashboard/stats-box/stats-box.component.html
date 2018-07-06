@@ -1,0 +1,40 @@
+        <div class="card card-default card-contrast">
+          <div class="card-header">
+            <i class="icon icon-kpi mdi mdi-wrench"></i>
+            Production
+          </div>
+          <div class="card-body card-body-contrast">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th style="text-align:center;">Doc Type
+                  </th>
+                  <th style="text-align:left; padding-left: 30px;">YTD
+                  </th>
+                  <th style="text-align:left; padding-left:30px;">Week
+                  </th>
+                  <th style="text-align:center">Rank
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let doc of office_data.travelDocs">
+                  <td class="icon-kpi-value">{{doc.name}}</td>
+                  <td>
+                    <app-change-widget [term]=doc.terms[0]>
+                    </app-change-widget>
+                  </td>
+                  <td>
+                    <app-change-widget [term]=doc.terms[1]>
+                    </app-change-widget>
+                  </td>
+                  <td style="text-align: center;">
+                    <span class="icon-kpi-value badge badge-pill">
+                    {{doc.terms[2].current}}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>

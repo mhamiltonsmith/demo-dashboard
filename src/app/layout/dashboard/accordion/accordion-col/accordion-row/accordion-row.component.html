@@ -1,0 +1,45 @@
+<div class="card">
+  <div [attr.id]="getHeadingId()" class="card-header">
+<!-- If the row's data object should be viewed as a change widget and sparkline graph... -->
+    <div *ngIf="!isBadge()" class="row">
+      <div class="col-12 col-sm-3 col-md-3">                  
+        <button data-toggle="collapse" aria-expanded="false" [attr.aria-controls]="getCollapseId()" class="btn collapsed" [attr.data-target]="getTargets()"><i class="icon mdi mdi-chevron-right"></i>
+          <span [innerHTML]="term.name">
+          </span>
+        </button>
+      </div>
+      <div class="col-12 col-sm-5 col-md-5">                  
+        <app-change-widget [term]="term">
+        </app-change-widget>
+      </div>
+      <div class="col-12 col-sm-2 col-md-2">
+        <span [attr.id]="getSparklineId()" class="chart sparkline">
+        </span>
+      </div>
+    </div>
+<!-- Otherwise, if the row's data object should be viewed as a badge... -->
+    <div *ngIf="isBadge()" class="row">
+      <div class="col-12 col-sm-3 col-md-3">
+        <button class="btn collapsed" style="cursor: default; margin-left:15px">
+          <span [innerHTML]="term.name">
+          </span>
+        </button>
+      </div>
+      <div class="col-12 col-sm-5 col-md-5">                  
+        <div style="padding-left:25px; margin-top: 17px;">
+          <span _ngcontent-c4="" class="icon-kpi-value badge badge-pill" [innerHTML]="numeral(term.current).format('0.a')"></span>
+        </div>
+      </div>
+      <div class="col-12 col-sm-2 col-md-2">
+        <span [attr.id]="getSparklineId()" class="chart sparkline">
+        </span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!isBadge()" [attr.id]="getCollapseId()" [attr.aria-labelledby]="getHeadingId()" data-parent="#accordion" class="collapse">
+    <div class="card-body">
+      <canvas [attr.id]="term.chartjsId" height="200"></canvas>
+    </div>
+  </div>
+  <div *ngIf="chartsInit()"></div>
+</div>

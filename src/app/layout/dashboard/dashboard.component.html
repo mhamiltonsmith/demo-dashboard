@@ -1,118 +1,39 @@
 <div class="be-content">
-  <div class="main-content container-fluid">
-    <div class="page-head">
-      <h2 class="page-head-title">Beijing</h2>
-      <nav aria-label="breadcrumb" role="navigation">
-        <ol class="breadcrumb page-head-nav">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item"><a href="#">Network</a></li>
-          <li class="breadcrumb-item active">Beijing</li>
-        </ol>
-      </nav>
-    </div>
-
+  <div class="page-head">
+    <h2 class="page-head-title">{{ office_data.name }}</h2>
+    <nav aria-label="breadcrumb" role="navigation">
+      <ol class="breadcrumb page-head-nav">
+        <li class="breadcrumb-item"><a [routerLink] = "['/content']">Home</a></li>
+        <li class="breadcrumb-item"><a [routerLink] = "['/content']">Network</a></li>
+        <li class="breadcrumb-item active">{{ office_data.name }}</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="main-content container-fluid">  
     <div class="row">
       <div class="col-12 col-lg-6">
-        <div class="card card-default card-contrast">
-          <div class="card-header">
-            <i class="icon icon-kpi mdi mdi-wrench"></i>
-            Production
-          </div>
-          <div class="card-body card-body-contrast">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th style="text-align:center">Doc Type
-                  </th>
-                  <th style="text-align:left; padding-left: 30px;">YTD
-                  </th>
-                  <th style="text-align:left; padding-left:30px;">Week
-                  </th>
-                  <th style="text-align:center">Rank
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let kpi of kpis">
-                  <td class="icon-kpi-value">{{kpi.name}}</td>
-                  <td>
-                    <div>
-                      <div style= "padding-left:25px">
-                        <span class="number" id="valueA" style="font-size:1.6rem; font-weight:600;">{{kpi.ytd_value}}</span>
-                        <div class="desc" style="color:red;font-size:0.9rem;">
-                          <span id="amountChangeA">1.2k</span>
-                          <span id="percentChangeA">(12.1%)</span>
-                        </div>
-                      </div>
-                      <span class="down-arrow-container">
-                        <div class="down-chevron"></div>
-                        <div class="down-chevron"></div>
-                        <div class="down-chevron"></div>
-                      </span>
-                    </div>
-                  </td>
-                  <td>
-                    <div>
-                      <div style= "padding-left:25px">
-                        <span class="number" id="valueA" style="font-size:1.6rem; font-weight:600;">{{kpi.week_value}}</span>
-                        <div class="desc" style="color:green;font-size:0.9rem;">
-                          <span id="amountChangeA">1.2k</span>
-                          <span id="percentChangeA">(12.1%)</span>
-                        </div>
-                      </div>
-                      <span class="up-arrow-container">
-                        <div class="up-chevron"></div>
-                        <div class="up-chevron"></div>
-                        <div class="up-chevron"></div>
-                      </span>
-                    </div>
-                  </td>
-                  <td style="text-align:center">
-                    <span class="icon-kpi-value badge badge-pill">
-                    {{kpi.rank}}
-                    </span>
-                  </td>
-                </tr>
-              </tbody>        
-            </table>
-          </div>
-        </div>
+        <app-stats-box>
+        </app-stats-box>
       </div>
       <div class="col-12 col-lg-6">
-        <div class="card card-flat">
-          <div class="card-header">Regional View</div>
-          <div class="card-body">
-            <div id="china-map" style="height: 380px;">
-            </div>
-          </div>
-        </div>
+        <app-map-widget>
+        </app-map-widget>
       </div>
     </div>
     <div class="row">
       <div class="col-12 col-lg-6">
-        <div class="card card-flat">
-          <div class="card-header">Inventory</div>
-          <div class="card-body">
-            <p>Quisque gravida aliquam diam at cursus, quisque laoreet ac lectus a rhoncusac tempus odio.</p>
-            <p>Aliquam posuere volutpat turpis, ut euimod diam pellentesque at. Sed sit amet nulla a dui dignisim euismod. Morbi luctus elementum dictum. Donec convallis mattis elit id varius. Quisque facilisis sapien quis mauris, erat condimentum.</p>
-          </div>
-        </div>
+        <app-text-box [title]="'Inventory'">
+        </app-text-box>
       </div>
       <div class="col-12 col-lg-6">
-        <div class="card card-flat">
-          <div class="card-header">Processing Times</div>
-          <div class="card-body">
-            <p>Quisque gravida aliquam diam at cursus, quisque laoreet ac lectus a rhoncusac tempus odio.</p>
-            <p>Aliquam posuere volutpat turpis, ut euimod diam pellentesque at. Sed sit amet nulla a dui dignisim euismod. Morbi luctus elementum dictum. Donec convallis mattis elit id varius. Quisque facilisis sapien quis mauris, erat condimentum.</p>
-          </div>
-        </div>
+        <app-text-box [title]="'Processing Times'">
+        </app-text-box>
       </div>
     </div>
 
     <h2 class="page-head-title">Intake</h2>
     <app-accordion>
     </app-accordion>
-
   </div>
 </div>
 

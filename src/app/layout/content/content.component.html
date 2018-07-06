@@ -1,45 +1,5 @@
 <div class="be-content">
   <div class="main-content container-fluid">
-    <div class="row">
-      <div class="col-12 col-lg-6 col-xl-3">
-        <div class="widget widget-tile">
-          <div class="data-info">
-            <div>
-            <div class="desc">Applications
-            </div>
-              <div class="widget-counter-group widget-counter-group-right">
-                <div class="counter counter-big">           
-                  <app-up-arrow></app-up-arrow>
-                </div>
-                <div class="counter counter-big">           
-                  <div class="value" [innerHTML]="content.valueB2">0</div>
-                  <div class="desc" style="color:green;font-weight:bold;">
-                    <span [innerHTML]="getDifference(content.valueB1, content.valueB2)">0</span>
-                    <span>,&nbsp;</span>
-                    <span [innerHTML]="getPercentageChange(content.valueB1, content.valueB2)">0</span>
-                    <span>%</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-lg-6 col-xl-3">
-        <div class="widget widget-tile">
-          <div id="spark1" class="chart sparkline">
-          </div>
-          <div class="data-info">
-            <div class="desc">Approvals
-            </div>
-            <div class="value">
-              <app-down-arrow></app-down-arrow>
-              <span data-toggle="counter" data-end="113" class="number" [innerHTML]="getDifference(content.valueC1, content.valueC2)">0</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <h3 class="text-center"><span [innerHTML]="content.valueA"></span></h3>
+    <h3 class="text-center"><span [innerHTML]="filler"></span></h3>
   </div>
 </div>

@@ -1,6 +1,7 @@
 
 // Data for Office
 
+export {office_data};
 var office_data =
 {
         intake: 

@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 
-declare var content: any;
 declare var App: any;
 
 @Component({
@@ -9,17 +8,9 @@ declare var App: any;
   styleUrls: ['../../app.component.css']
 })
 export class ContentComponent implements OnInit, AfterViewInit {
-  content = content
-  title = "Passports"
+  filler = "Welcome to the Dashboard Startpage"
 
   constructor() { }
-
-  getDifference(valueA: number, valueB: number): string {
-    return (valueB - valueA).toFixed(2).replace(/[.,]00$/, "");
-  }
-  getPercentageChange(valueA: number, valueB: number): string {
-    return ((valueB - valueA)/valueA).toFixed(2).replace(/[.,]00$/, "");
-  }
 
   ngOnInit() {
   }

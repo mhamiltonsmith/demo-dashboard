@@ -28,16 +28,12 @@
               "src/assets/css/styles.css",
               "src/assets/lib/material-design-icons/css/material-design-iconic-font.css",
               "src/assets/lib/jquery.vectormap/jquery-jvectormap-1.2.2.css",
-              "src/assets/lib/jqvmap/jqvmap.min.css",
-              "src/assets/css/app_mod.css",
-              "src/assets/css/arrows_mod.css"
+              "src/assets/css/app_mod.css"
             ],
             "scripts": [
               "src/assets/lib/jquery/jquery.min.js",
               "src/assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js",
               "src/assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "src/assets/js/vars.js",
-              "src/assets/js/app.js",
               "src/assets/lib/jquery-flot/jquery.flot.js",
               "src/assets/lib/jquery-flot/jquery.flot.pie.js",
               "src/assets/lib/jquery-flot/jquery.flot.time.js",
@@ -47,18 +43,17 @@
               "src/assets/lib/jquery-flot/plugins/jquery.flot.tooltip.js",
               "src/assets/lib/countup/countUp.min.js",
               "src/assets/lib/jquery-ui/jquery-ui.min.js",
-              "src/assets/js/app-dashboard.js",
-              "src/assets/js/app-charts-sparkline.js",
               "src/assets/lib/jquery.sparkline/jquery.sparkline.min.js",
               "src/assets/lib/jqvmap/jquery.vmap.min.js",
               "src/assets/lib/jqvmap/maps/jquery.vmap.world.js",
               "src/assets/lib/jquery.vectormap/jquery-jvectormap-1.2.2.min.js",
               "src/assets/lib/jquery.vectormap/maps/jquery-jvectormap-cn-merc.js",
-              "src/assets/lib/chartjs/Chart.min.js",
-              "src/assets/js/app-charts-chartjs.js",
+              "src/assets/lib/jquery.vectormap/maps/jquery-jvectormap-europe-mill-en.js",
               "src/assets/lib/numeraljs/numeral.min.js",
-              "src/assets/js/ircc-ui-office.js",
-              "src/assets/js/ircc-ui-office-map.js"
+              "src/assets/lib/chartjs/Chart.js",
+              "src/assets/js/app.js",
+              "src/assets/js/app-charts-chartjs.js",
+              "src/assets/js/app-dashboard.js"
             ]
           },
           "configurations": {

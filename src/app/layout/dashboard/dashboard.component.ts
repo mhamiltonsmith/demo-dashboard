@@ -1,50 +1,55 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-
-declare var content: any;
-declare var App: any;
-declare var office_data: any;
-declare var numeral: any;
+import { Component, OnInit, AfterViewInit, Input, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { IntakeOffice } from './IntakeOffice';
+import { office_data } from '../../../assets/js/ircc-ui-office.js';
+import { DashboardService } from './dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit, AfterViewInit {
+export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  content = content
+  private office_data: IntakeOffice;
+  private office_id:   number;
+  private sub:         any;
 
-  kpis: any[] = [
-    {
-      id:1,name:'TRV',
-      ytd_value:numeral(office_data.intake.trv.ytd.current).format('0.0a'),
-      week_value:numeral(office_data.intake.trv.week.current).format('0.0a'),
-      rank:office_data.intake.trv.rank
-    },
-    {
-      id:2,name:'SP',
-      ytd_value:numeral(office_data.intake.sp.ytd.current).format('0.0a'),
-      week_value:numeral(office_data.intake.sp.week.current).format('0.0a'),
-      rank:office_data.intake.sp.rank
-    },
-    {
-      id:3,name:'WP',
-      ytd_value:numeral(office_data.intake.wp.ytd.current).format('0.0a'),
-      week_value:numeral(office_data.intake.wp.week.current).format('0.0a'),
-      rank:office_data.intake.wp.rank
-    }
-  ]
+  makeMap(){
+    var color1 = App.color.primary;
+    $('#region-map').empty();
+    $('#region-map').vectorMap({
+      map: this.office_data.map,
+      backgroundColor: 'transparent',
+      regionStyle: {
+        initial: {
+          fill: color1,
+        },
+        hover: {
+          "fill-opacity": 0.8
+        }
+      }
+    });
+  }
 
-  constructor() { }
+  constructor(private dashboardService: DashboardService, public route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.sub = this.route.params.subscribe(params => { 
+      this.office_id = +params['id'];
+      this.office_data = this.dashboardService.getIntakeOffice(this.office_id);
+      this.makeMap()
+    });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   ngAfterViewInit() {
     App.init();
-    App.chartsSparklines();
     App.ChartJs();
-    App.mapsVector();
+    this.makeMap()
   }
 
 }

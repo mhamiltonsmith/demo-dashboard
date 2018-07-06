@@ -9125,8 +9125,16 @@ module.exports = Element.extend({
 
 		ctx.beginPath();
 
-		ctx.arc(vm.x, vm.y, vm.outerRadius, sA, eA);
-		ctx.arc(vm.x, vm.y, vm.innerRadius, eA, sA, true);
+                if (vm.outerRadius < 0) {
+			ctx.arc(vm.x, vm.y, 0, sA, eA);
+		} else {
+			ctx.arc(vm.x, vm.y, vm.outerRadius, sA, eA);
+		}
+                if (vm.outerRadius < 0) {
+			ctx.arc(vm.x, vm.y, 0, eA, sA, true);
+		} else {
+			ctx.arc(vm.x, vm.y, vm.innerRadius, eA, sA, true);
+		}
 
 		ctx.closePath();
 		ctx.strokeStyle = vm.borderColor;
@@ -13551,7 +13559,9 @@ module.exports = function(Chart) {
 					// Don't draw a centre value (if it is minimum)
 					if (index > 0 || tickOpts.reverse) {
 						var yCenterOffset = me.getDistanceFromCenterForValue(me.ticksAsNumbers[index]);
-
+						if (yCenterOffset < 0) {
+							yCenterOffset = 0;
+						}
 						// Draw circular lines around the scale
 						if (gridLineOpts.display && index !== 0) {
 							drawRadiusLine(me, gridLineOpts, yCenterOffset, index);
