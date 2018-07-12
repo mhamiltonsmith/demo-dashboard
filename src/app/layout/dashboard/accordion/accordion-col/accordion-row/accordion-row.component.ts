@@ -12,11 +12,16 @@ export class AccordionRowComponent implements OnInit, OnChanges {
 
 /** Matching rows in each columns all open at once. Each row has a unique id. A list of these ids is specified in each row's data-target property */
 
-  @Input() term:      any;         /** Row-specific data object */
-  @Input() doc_name:  string;      /** The name of this row's column */
-  @Input() doc_names: string[];    /** The names of all columns in the accordion */
+  chart_data   = [20, 18, 12, 28, 6, 38, 19, 7, 2, 15, 17, 13]
+ 
+  @Input() chart_color: string[];
+  @Input() term:        any;         /** Row-specific data object */
+  @Input() doc_name:    string;      /** The name of this row's column */
+  @Input() doc_names:   string[];    /** The names of all columns in the accordion */
+           is_badge:    boolean;
 
-  private numeral: any = numeral;  /** Define numeral so it may be called from this components HTML template */
+  private numeral: any = numeral;       /** Define numeral so it may be called from this components HTML template */
+  private chart_area = { height: 35 };  /** Define a parameter object to feed to sparkline component */
 
 /** Determines whether row should be appear as a simple badge or a details stats */
   isBadge(): boolean {
@@ -72,7 +77,7 @@ export class AccordionRowComponent implements OnInit, OnChanges {
     }
       
 
-    $('#spark-'+ this.doc_name.toLowerCase() + '-' + term_name).sparkline([20, 18, 12, 28, 6, 10, 19, 7, 2, 15, 17, 13],{
+    $('#spark-'+ this.doc_name.toLowerCase() + '-' + term_name).sparkline([20, 18, 12, 28, 6, 10, 19, 7, 2, 15, 17, 13], {
       type: 'bar',
       width: '85',
       height: '35',
@@ -85,7 +90,9 @@ export class AccordionRowComponent implements OnInit, OnChanges {
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.is_badge = this.isBadge();
+  }
 
   ngOnChanges() { }
 

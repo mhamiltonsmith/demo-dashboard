@@ -2,9 +2,11 @@ import { IntakeOffice } from './IntakeOffice';
 
 export const intake_offices: IntakeOffice[] = [
   {
-    id: 1,
+    id: 0,
     name: "Beijing",
-    map:  "cn_merc",
+    map:  "CN",
+    lat:  39.90,
+    lng:  116.41,
     travelDocs: [
       {
         name: "TRV",
@@ -78,9 +80,11 @@ export const intake_offices: IntakeOffice[] = [
     ]
   },
   {
-    id: 2,
-    name: "Narnia",
-    map:  "europe_mill_en",
+    id: 1,
+    name: "Mumbai",
+    map:  "IN",
+    lat:  19.08,
+    lng:  72.88,
     travelDocs: [
       {
         name: "TRV",

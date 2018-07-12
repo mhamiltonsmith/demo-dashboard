@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { IntakeOfficeService } from '../../intake-office/intake-office.service';
 
 declare var App: any;
 
@@ -8,15 +9,16 @@ declare var App: any;
   styleUrls: ['../../app.component.css']
 })
 export class ContentComponent implements OnInit, AfterViewInit {
+
+  title  = "Home"
   filler = "Welcome to the Dashboard Startpage"
 
-  constructor() { }
+  constructor( private intakeOfficeService: IntakeOfficeService ) { }
 
   ngOnInit() {
+    this.intakeOfficeService.sendTitle(this.title);
   }
 
-  ngAfterViewInit() {
-    App.init();
-  }
+  ngAfterViewInit() { }
 
 }

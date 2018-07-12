@@ -1,44 +1,42 @@
-import { Component, OnInit, AfterViewInit, Input, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { IntakeOffice } from './IntakeOffice';
-import { office_data } from '../../../assets/js/ircc-ui-office.js';
-import { DashboardService } from './dashboard.service';
+import { Component, OnInit, AfterViewInit, Input, OnDestroy, ViewChild } from '@angular/core';
+import { ActivatedRoute }      from '@angular/router';
+import { IntakeOffice }        from '../../intake-office/IntakeOffice';
+import { IntakeOfficeService } from '../../intake-office/intake-office.service';
+import { MapWidgetComponent }  from './map-widget/map-widget.component';
+import { StatsBoxComponent }   from './stats-box/stats-box.component';
+import { AccordionComponent }  from './accordion/accordion.component';
 
 @Component({
-  selector: 'app-dashboard',
+  selector:    'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: [ './dashboard.component.css'
+  ]
 })
 export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private office_data: IntakeOffice;
-  private office_id:   number;
   private sub:         any;
+  public  title:       string       = "Dashboard";
 
-  makeMap(){
-    var color1 = App.color.primary;
-    $('#region-map').empty();
-    $('#region-map').vectorMap({
-      map: this.office_data.map,
-      backgroundColor: 'transparent',
-      regionStyle: {
-        initial: {
-          fill: color1,
-        },
-        hover: {
-          "fill-opacity": 0.8
-        }
-      }
-    });
+  @ViewChild(MapWidgetComponent) map_widget_component: MapWidgetComponent
+  @ViewChild(StatsBoxComponent)  stats_box_component:  StatsBoxComponent
+  @ViewChild(AccordionComponent) accordion_component:  AccordionComponent
+
+  updateData() {
+    this.map_widget_component.updateData(this.office_data);
+    this.stats_box_component.updateData(this.office_data);
+    this.accordion_component.updateData(this.office_data);
+    this.map_widget_component.makeMap();
   }
 
-  constructor(private dashboardService: DashboardService, public route: ActivatedRoute) { }
+  constructor(private intakeOfficeService: IntakeOfficeService, public route: ActivatedRoute) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => { 
-      this.office_id = +params['id'];
-      this.office_data = this.dashboardService.getIntakeOffice(this.office_id);
-      this.makeMap()
+      var office_name = params['id'];
+      this.office_data = this.intakeOfficeService.getOffice(office_name);
+      this.intakeOfficeService.sendTitle(this.title);
+      this.updateData();
     });
   }
 
@@ -47,9 +45,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    App.init();
-    App.ChartJs();
-    this.makeMap()
+    this.updateData();
   }
 
 }

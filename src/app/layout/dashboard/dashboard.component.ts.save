@@ -1,0 +1,47 @@
+import { Component, OnInit, AfterViewInit, Input, OnDestroy, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IntakeOffice } from './IntakeOffice';
+import { DashboardService } from './dashboard.service';
+import { MapWidgetComponent } from './map-widget/map-widget.component';
+
+declare var jvm: any;
+
+@Component({
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: [
+    './dashboard.component.css'
+  ]
+})
+export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
+
+  data = [ 936, 968, 1025, 999, 998, 1014, 1017, 1010, 1010, 1007 ]
+
+  private office_data: IntakeOffice;
+  private office_id:   number;
+  private sub:         any;
+  private makeMap:     any;
+  private mapObj:      any;
+
+  constructor(private dashboardService: DashboardService, public route: ActivatedRoute, public router: Router) { }
+
+  @ViewChild(MapWidgetComponent) map_component: MapWidgetComponent
+  ngOnInit() {
+    this.sub = this.route.params.subscribe(params => { 
+      this.office_id = +params['id'];
+      this.office_data = this.dashboardService.getIntakeOffice(this.office_id);
+    });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+    console.log("Dashboard destroyed!");
+  }
+
+  ngAfterViewInit() {
+    App.init();
+    App.ChartJs();
+    this.map_component.makeMap();
+  }
+
+}

@@ -28,7 +28,8 @@
               "src/assets/css/styles.css",
               "src/assets/lib/material-design-icons/css/material-design-iconic-font.css",
               "src/assets/lib/jquery.vectormap/jquery-jvectormap-1.2.2.css",
-              "src/assets/css/app_mod.css"
+              "src/assets/css/app_mod.css",
+              "src/assets/lib/kendo-ui/all.css"
             ],
             "scripts": [
               "src/assets/lib/jquery/jquery.min.js",
@@ -47,12 +48,10 @@
               "src/assets/lib/jqvmap/jquery.vmap.min.js",
               "src/assets/lib/jqvmap/maps/jquery.vmap.world.js",
               "src/assets/lib/jquery.vectormap/jquery-jvectormap-1.2.2.min.js",
-              "src/assets/lib/jquery.vectormap/maps/jquery-jvectormap-cn-merc.js",
-              "src/assets/lib/jquery.vectormap/maps/jquery-jvectormap-europe-mill-en.js",
+              "src/assets/lib/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js",
               "src/assets/lib/numeraljs/numeral.min.js",
               "src/assets/lib/chartjs/Chart.js",
               "src/assets/js/app.js",
-              "src/assets/js/app-charts-chartjs.js",
               "src/assets/js/app-dashboard.js"
             ]
           },

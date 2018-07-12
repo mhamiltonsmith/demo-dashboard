@@ -2,6 +2,8 @@ export class IntakeOffice {
   id:   number;
   name: string;
   map:  string;
+  lat:  number;
+  lng:  number;
   travelDocs: TravelDoc[];
 }
 

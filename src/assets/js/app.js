@@ -47,12 +47,14 @@ var App = (function () {
 
   //Core private functions
   function leftSidebarInit(){
+    var wrapper = $('.be-wrapper');
     var leftSidebar = $(".be-left-sidebar");
     var firstAnchor = $(".sidebar-elements > li > a", leftSidebar);
     var anchor = $(".sidebar-elements li a", leftSidebar);
     var lsc = $(".left-sidebar-scroll", leftSidebar);
     var lsToggle = $(".left-sidebar-toggle", leftSidebar);
     var openLeftSidebarOnClick = config.openLeftSidebarOnClick ? true : false;
+        config.toggleLeftSidebarButton = $('.be-toggle-left-sidebar');
 
     // Refresh scroller
     function updateScroller(){
@@ -327,13 +329,12 @@ var App = (function () {
     
     /*Off canvas menu*/
       function leftSidebarOffCanvas() {
-
         /*Open Sidebar with toggle button*/
         config.toggleLeftSidebarButton.on("click", function(e){
           if ( openSidebar && body.hasClass( config.openLeftSidebarClass) ) {
             body.removeClass(config.openLeftSidebarClass);
             sidebarDelay();
-          } else {            
+          } else {
             body.addClass( config.openLeftSidebarClass + " " + config.transitionClass);
             openSidebar = true;
           }
@@ -348,7 +349,6 @@ var App = (function () {
           }
         });
       }
-
       // Left sidebar off-canvas
       if ( wrapper.hasClass( config.offCanvasLeftSidebarClass ) ) {
         leftSidebarOffCanvas();

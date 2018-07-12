@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-declare const App: any;
+import { ActivatedRoute } from '@angular/router';
+import { IntakeOfficeService } from '../../intake-office/intake-office.service';
 
 @Component({
   selector: 'app-left-sidebar',
@@ -12,12 +12,17 @@ declare const App: any;
 })
 export class LeftSidebarComponent implements OnInit {
 
-  subTitle = "Dashboard"
+  sub:          any;
+  office_names: string[];
+  title:        string;
 
-  constructor() { 
-  }
+  constructor( private intakeOfficeService: IntakeOfficeService, public route: ActivatedRoute ) { }
 
   ngOnInit() {
+    this.office_names = this.intakeOfficeService.getOfficeNames();
+    this.sub = this.intakeOfficeService.getTitle().subscribe(title => {
+      this.title = title.value;
+    });
   }
 
 }

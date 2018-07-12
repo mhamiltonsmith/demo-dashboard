@@ -1,0 +1,55 @@
+import { Component, OnInit, AfterViewInit, Input, OnDestroy, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { IntakeOffice } from '../../intake-office/IntakeOffice';
+import { IntakeOfficeService } from '../../intake-office/intake-office.service';
+import { MapWidgetComponent } from './map-widget/map-widget.component';
+import { StatsBoxComponent } from './stats-box/stats-box.component';
+import { AccordionComponent } from './accordion/accordion.component';
+
+declare var jvm: any;
+
+@Component({
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: [
+    './dashboard.component.css'
+  ]
+})
+export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
+
+  data = [ 936, 968, 1025, 999, 998, 1014, 1017, 1010, 1010, 1007 ]
+
+  private office_data: IntakeOffice;
+  private office_name: string;
+  private sub:         any;
+
+  @ViewChild(MapWidgetComponent) map_component: MapWidgetComponent
+  @ViewChild(StatsBoxComponent) stats_box_component: StatsBoxComponent
+  @ViewChild(AccordionComponent) accordion_component: AccordionComponent
+
+  constructor(private intakeOfficeService: IntakeOfficeService, public route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.sub = this.route.params.subscribe(params => { 
+      this.office_name = params['id'];
+      this.office_data = this.intakeOfficeService.getOffice(this.office_name);
+      this.map_component.updateData(this.office_data);
+      this.stats_box_component.updateData(this.office_data);
+      this.accordion_component.updateData(this.office_data);
+      this.map_component.makeMap();
+    });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+  ngAfterViewInit() {
+    App.init();
+    App.ChartJs();
+    this.stats_box_component.updateData(this.office_data);
+    this.accordion_component.updateData(this.office_data);
+    this.map_component.makeMap();
+  }
+
+}

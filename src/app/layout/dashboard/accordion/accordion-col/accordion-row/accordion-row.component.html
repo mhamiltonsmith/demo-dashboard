@@ -1,44 +1,43 @@
 <div class="card">
   <div [attr.id]="getHeadingId()" class="card-header">
-<!-- If the row's data object should be viewed as a change widget and sparkline graph... -->
-    <div *ngIf="!isBadge()" class="row">
-      <div class="col-12 col-sm-3 col-md-3">                  
+    <div class="row">
+      <div *ngIf="!is_badge" class="col-12 col-sm-3 col-md-3">                  
         <button data-toggle="collapse" aria-expanded="false" [attr.aria-controls]="getCollapseId()" class="btn collapsed" [attr.data-target]="getTargets()"><i class="icon mdi mdi-chevron-right"></i>
           <span [innerHTML]="term.name">
           </span>
         </button>
       </div>
-      <div class="col-12 col-sm-5 col-md-5">                  
+      <div *ngIf="!is_badge" class="col-12 col-sm-5 col-md-5">                  
         <app-change-widget [term]="term">
         </app-change-widget>
       </div>
-      <div class="col-12 col-sm-2 col-md-2">
-        <span [attr.id]="getSparklineId()" class="chart sparkline">
-        </span>
-      </div>
-    </div>
-<!-- Otherwise, if the row's data object should be viewed as a badge... -->
-    <div *ngIf="isBadge()" class="row">
-      <div class="col-12 col-sm-3 col-md-3">
+      <div *ngIf="is_badge" class="col-12 col-sm-3 col-md-3">
         <button class="btn collapsed" style="cursor: default; margin-left:15px">
           <span [innerHTML]="term.name">
           </span>
         </button>
       </div>
-      <div class="col-12 col-sm-5 col-md-5">                  
+      <div *ngIf="is_badge" class="col-12 col-sm-5 col-md-5">                  
         <div style="padding-left:25px; margin-top: 17px;">
           <span _ngcontent-c4="" class="icon-kpi-value badge badge-pill" [innerHTML]="numeral(term.current).format('0.a')"></span>
         </div>
       </div>
-      <div class="col-12 col-sm-2 col-md-2">
-        <span [attr.id]="getSparklineId()" class="chart sparkline">
-        </span>
+      <div class="col-12 col-sm-2 col-md-2" style="padding-top:0.7em;">
+        <kendo-sparkline [data]="chart_data" [chartArea]="chart_area" [seriesColors]="chart_color" type="column">
+        </kendo-sparkline>
       </div>
     </div>
   </div>
-  <div *ngIf="!isBadge()" [attr.id]="getCollapseId()" [attr.aria-labelledby]="getHeadingId()" data-parent="#accordion" class="collapse">
+  <div *ngIf="!is_badge" [attr.id]="getCollapseId()" [attr.aria-labelledby]="getHeadingId()" data-parent="#accordion" class="collapse">
     <div class="card-body">
-      <canvas [attr.id]="term.chartjsId" height="200"></canvas>
+
+      <kendo-chart>
+        <kendo-chart-tooltip format="{0}"></kendo-chart-tooltip>
+        <kendo-chart-series>
+          <kendo-chart-series-item type="line" [data]="chart_data" [color]="chart_color[0]"></kendo-chart-series-item>
+        </kendo-chart-series>
+      </kendo-chart>
+
     </div>
   </div>
   <div *ngIf="chartsInit()"></div>

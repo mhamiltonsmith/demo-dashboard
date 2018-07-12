@@ -1,18 +1,17 @@
 <div class="be-left-sidebar">
-  <div class="left-sidebar-wrapper"><a class="left-sidebar-toggle">Blank Page</a>
+  <div class="left-sidebar-wrapper"><a class="left-sidebar-toggle">{{title}}</a>
     <div class="left-sidebar-spacer">
       <div class="left-sidebar-scroll">
         <div class="left-sidebar-content">
           <ul class="sidebar-elements">
-            <li class="divider">Menu</li>
+<!--            <li class="divider">Menu</li> -->
             <li class="active">
-              <a [routerLink] = "['/content']"><i class="icon mdi mdi-home"></i><span>Home</span></a>
+              <a routerLink = "/content"><i class="icon mdi mdi-home"></i><span>Home</span></a>
             </li>
             <li class="parent"><a style="cursor:pointer;"><i class="icon mdi mdi-globe"></i><span>Network</span></a>
               <ul class="sub-menu">
-                <li><a [routerLink] = "['/dashboard', 1]">Beijing</a>
-                </li>
-                <li><a [routerLink] = "['/dashboard', 2]">Narnia</a>
+                <li class="" *ngFor="let name of office_names">
+                  <a routerLink = "/dashboard/{{name.toLowerCase()}}">{{name}}</a>
                 </li>
               </ul>
             </li>

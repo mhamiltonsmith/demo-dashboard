@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { DashboardService } from '../dashboard.service';
+import { IntakeOffice } from '../../../intake-office/IntakeOffice';
 
 declare var numeral: any;
 
@@ -11,19 +10,15 @@ declare var numeral: any;
 })
 export class StatsBoxComponent implements OnInit {
 
-  private  sub:         any;
-           office_id:   number;
-           office_data: any;
+  private  office_data: IntakeOffice;
 
-  constructor( private dashboardService: DashboardService, private route: ActivatedRoute ) { }
+  updateData(office_data: IntakeOffice) {
+    this.office_data = office_data;
+  }
 
-  ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-      this.office_id = +params['id'];
-      this.office_data = this.dashboardService.getIntakeOffice(this.office_id);
-    });
-  }
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
+  constructor() { }
+
+  ngOnInit() { }
+
+  ngOnDestroy() { }
 }
