@@ -34,13 +34,13 @@ export class IntakeOfficeService {
     return offices;
   }
 
-    sendTitle(title: string) {
-        this.subject.next({ value: title });
-    }
+  updateTitle(title: string) {
+      this.subject.next({ value: title });
+  }
 
-    getTitle(): Observable<any> {
-        return this.subject.asObservable();
-    }
+  getTitle(): Observable<any> {
+      return this.subject.asObservable();
+  }
 
   constructor() { }
 }

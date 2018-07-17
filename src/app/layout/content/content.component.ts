@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, ViewChild } from '@angular/core';
+import { Router }              from '@angular/router';
 import { IntakeOfficeService } from '../../intake-office/intake-office.service';
-
-declare var App: any;
+import { LayoutService }       from '../layout.service';
+import { MapWidgetComponent }  from '../dashboard/map-widget/map-widget.component';
 
 @Component({
   selector: 'app-content',
@@ -10,13 +11,21 @@ declare var App: any;
 })
 export class ContentComponent implements OnInit, AfterViewInit {
 
-  title  = "Home"
-  filler = "Welcome to the Dashboard Startpage"
+  title:        string    = "Dashboard"
+  office_names: string[];
 
-  constructor( private intakeOfficeService: IntakeOfficeService ) { }
+  @ViewChild(MapWidgetComponent) map_widget_component: MapWidgetComponent
+
+  goToOffice(office_name) {
+    this.router.navigate(['./network', office_name.toLowerCase()]);
+  }
+
+  constructor( private intakeOfficeService: IntakeOfficeService, private layoutService: LayoutService, public router: Router ) { }
 
   ngOnInit() {
-    this.intakeOfficeService.sendTitle(this.title);
+    this.office_names = this.intakeOfficeService.getOfficeNames();
+    this.layoutService.updateTitle(this.title);
+    this.map_widget_component.makeMap();
   }
 
   ngAfterViewInit() { }

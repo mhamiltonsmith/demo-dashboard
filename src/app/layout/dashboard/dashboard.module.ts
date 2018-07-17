@@ -1,19 +1,19 @@
-import { NgModule } from '@angular/core';
+import { NgModule }     from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ChartsModule } from '@progress/kendo-angular-charts';
-import { SparklineModule } from '@progress/kendo-angular-charts';
+import { ChartsModule }            from '@progress/kendo-angular-charts';
+import { SparklineModule }         from '@progress/kendo-angular-charts';
+import { DashboardRoutingModule }  from './dashboard-routing.module';
 
-import { DashboardRoutingModule } from './dashboard-routing.module';
-import { DashboardComponent } from './dashboard.component';
-import { AccordionComponent } from './accordion/accordion.component';
+import { DashboardComponent }    from './dashboard.component';
+import { AccordionComponent }    from './accordion/accordion.component';
 import { AccordionColComponent } from './accordion/accordion-col/accordion-col.component';
 import { AccordionRowComponent } from './accordion/accordion-col/accordion-row/accordion-row.component';
-import { StatsBoxComponent } from './stats-box/stats-box.component';
-import { MapWidgetComponent } from './map-widget/map-widget.component';
-import { TextBoxComponent } from './text-box/text-box.component';
-import { ChangeWidgetModule } from './change-widget/change-widget.module';
+import { StatsBoxComponent }     from './stats-box/stats-box.component';
+import { TextBoxComponent }      from './text-box/text-box.component';
+import { ChangeWidgetModule }    from './change-widget/change-widget.module';
+import { MapWidgetComponent }    from './map-widget/map-widget.component';
 
 import 'hammerjs';
 
@@ -31,8 +31,11 @@ import 'hammerjs';
     DashboardComponent,
     AccordionComponent,
     StatsBoxComponent,
-    MapWidgetComponent,
-    TextBoxComponent
+    TextBoxComponent,
+    MapWidgetComponent
+  ],
+  exports: [
+    MapWidgetComponent
   ]
 })
 export class DashboardModule { }

@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, Input, OnDestroy, ViewChild } from '@
 import { ActivatedRoute }      from '@angular/router';
 import { IntakeOffice }        from '../../intake-office/IntakeOffice';
 import { IntakeOfficeService } from '../../intake-office/intake-office.service';
+import { LayoutService }       from '../layout.service';
 import { MapWidgetComponent }  from './map-widget/map-widget.component';
 import { StatsBoxComponent }   from './stats-box/stats-box.component';
 import { AccordionComponent }  from './accordion/accordion.component';
@@ -14,9 +15,9 @@ import { AccordionComponent }  from './accordion/accordion.component';
 })
 export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
+  public  title:       string        = "Dashboard";
   private office_data: IntakeOffice;
   private sub:         any;
-  public  title:       string       = "Dashboard";
 
   @ViewChild(MapWidgetComponent) map_widget_component: MapWidgetComponent
   @ViewChild(StatsBoxComponent)  stats_box_component:  StatsBoxComponent
@@ -29,13 +30,13 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
     this.map_widget_component.makeMap();
   }
 
-  constructor(private intakeOfficeService: IntakeOfficeService, public route: ActivatedRoute) { }
+  constructor(private intakeOfficeService: IntakeOfficeService, private layoutService: LayoutService, public route: ActivatedRoute) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => { 
       var office_name = params['id'];
       this.office_data = this.intakeOfficeService.getOffice(office_name);
-      this.intakeOfficeService.sendTitle(this.title);
+      this.layoutService.updateTitle(this.title);
       this.updateData();
     });
   }

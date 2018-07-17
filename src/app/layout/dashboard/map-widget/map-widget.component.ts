@@ -1,6 +1,6 @@
-import { Component, OnInit, AfterViewInit, OnDestroy, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { IntakeOffice } from '../../../intake-office/IntakeOffice';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Router }              from '@angular/router';
+import { IntakeOffice }        from '../../../intake-office/IntakeOffice';
 import { IntakeOfficeService } from '../../../intake-office/intake-office.service';
 
 declare var jvm: any;
@@ -13,9 +13,10 @@ declare var jvm: any;
     '../../../../assets/lib/jqvmap/jqvmap.min.css'
   ]
 })
-export class MapWidgetComponent implements OnInit, AfterViewInit, OnDestroy {
+export class MapWidgetComponent implements OnInit, OnDestroy {
 
   private office_data:    IntakeOffice;
+  private name:           string;
   private intake_offices: IntakeOffice[];
   public  makeMap:        any;
 
@@ -36,11 +37,22 @@ export class MapWidgetComponent implements OnInit, AfterViewInit, OnDestroy {
 /** Function setFocusLatLng() sourced from https://stackoverflow.com/questions/14728371/jvector-map-how-to-focus-on-a-marker */
   constructor( public router: Router, private intakeOfficeService: IntakeOfficeService ) { 
     this.intake_offices = intakeOfficeService.getOffices();
+    var lat:      number;
+    var lng:      number;
+    var selected: number[];
     this.makeMap = function() {
+      if (!(this.office_data)) {
+        this.name = "Network";
+        lat       = 0;
+        lng       = 0;
+        selected  = [];
+      } else {
+        this.name = this.office_data.name;
+        lat       = this.office_data.lat;
+        lng       = this.office_data.lng;
+        selected  = [this.office_data.id];
+      }
       var markerList = this.getMarkers();
-      var lat        = this.office_data.lat;
-      var lng        = this.office_data.lng;
-      var id         = this.office_data.id;
       var labelCount = $('.jvectormap-label').length;
       for (var i = 0; i < labelCount; i++) {
         $('.jvectormap-label').remove();
@@ -70,9 +82,9 @@ export class MapWidgetComponent implements OnInit, AfterViewInit, OnDestroy {
             fill: 'yellow'
           }
         },
-        selectedMarkers: [id],
+        selectedMarkers: selected,
         onMarkerClick: function(event, code) {
-          router.navigate(['/dashboard', markerList[code].name.toLowerCase()]);
+          router.navigate(['/network', markerList[code].name.toLowerCase()]);
           $('#region-map').vectorMap('get', 'mapObject').setFocusLatLng(7, lat, lng);
         },
         onRegionClick: function(event, code) {
@@ -103,13 +115,13 @@ export class MapWidgetComponent implements OnInit, AfterViewInit, OnDestroy {
             this.setFocus(scale, centerX, centerY);
         }
       }
-      this.mapObj.setFocusLatLng(7, this.office_data.lat, this.office_data.lng);
+      if (this.office_data) {
+        this.mapObj.setFocusLatLng(7, this.office_data.lat, this.office_data.lng);
+      }
     }
   }
 
   ngOnInit() { }
-
-  ngAfterViewInit() { }
 
   ngOnDestroy() { }
 

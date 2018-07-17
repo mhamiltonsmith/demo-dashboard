@@ -4,14 +4,13 @@
       <div class="left-sidebar-scroll">
         <div class="left-sidebar-content">
           <ul class="sidebar-elements">
-<!--            <li class="divider">Menu</li> -->
             <li class="active">
-              <a routerLink = "/content"><i class="icon mdi mdi-home"></i><span>Home</span></a>
+              <a routerLink = "/network"><i class="icon mdi mdi-home"></i><span>Home</span></a>
             </li>
             <li class="parent"><a style="cursor:pointer;"><i class="icon mdi mdi-globe"></i><span>Network</span></a>
               <ul class="sub-menu">
                 <li class="" *ngFor="let name of office_names">
-                  <a routerLink = "/dashboard/{{name.toLowerCase()}}">{{name}}</a>
+                  <a routerLink = "/network/{{name.toLowerCase()}}">{{name}}</a>
                 </li>
               </ul>
             </li>
