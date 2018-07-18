@@ -8,10 +8,10 @@ const routes: Routes = [
   { path: '',
     component: LayoutComponent,
     children: [
-      { path: '', redirectTo: 'content' },
       { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
       { path: 'network/:id', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-      { path: 'network', loadChildren: './content/content.module#ContentModule' }
+      { path: 'network', loadChildren: './content/content.module#ContentModule' },
+      { path: '', redirectTo: 'network' },
     ]
   }
 ];

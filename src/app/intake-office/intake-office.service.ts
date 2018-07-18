@@ -10,6 +10,15 @@ export class IntakeOfficeService {
 
   private subject = new Subject<any>();
 
+  hasOffice(name: string): boolean {
+    for (var i in intake_offices) {
+      if (intake_offices[i].name.toLowerCase() == name) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   getOffice(name: string): IntakeOffice {
     for (var i in intake_offices) {
       if (intake_offices[i].name.toLowerCase() == name) {

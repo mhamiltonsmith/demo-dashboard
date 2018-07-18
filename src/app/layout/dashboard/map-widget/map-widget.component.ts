@@ -16,7 +16,7 @@ declare var jvm: any;
 export class MapWidgetComponent implements OnInit, OnDestroy {
 
   private office_data:    IntakeOffice;
-  private name:           string;
+  private name:           string          = "Network";
   private intake_offices: IntakeOffice[];
   public  makeMap:        any;
 
@@ -42,7 +42,6 @@ export class MapWidgetComponent implements OnInit, OnDestroy {
     var selected: number[];
     this.makeMap = function() {
       if (!(this.office_data)) {
-        this.name = "Network";
         lat       = 0;
         lng       = 0;
         selected  = [];
@@ -84,10 +83,12 @@ export class MapWidgetComponent implements OnInit, OnDestroy {
         },
         selectedMarkers: selected,
         onMarkerClick: function(event, code) {
+          console.log("Marker Clicked");
           router.navigate(['/network', markerList[code].name.toLowerCase()]);
           $('#region-map').vectorMap('get', 'mapObject').setFocusLatLng(7, lat, lng);
         },
         onRegionClick: function(event, code) {
+          console.log("Region Clicked");
           $('#region-map').vectorMap('set', 'focus', code);
         }
       });

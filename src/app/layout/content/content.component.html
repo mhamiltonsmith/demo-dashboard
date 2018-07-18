@@ -10,31 +10,6 @@
   <div class="main-content container-fluid">
     <div class="row">
       <div class="col-12 col-lg-6">
-        <div class="card card-table">
-                <div class="card-body">
-                  <div class="table-responsive noSwipe">
-                    <table class="table table-striped table-hover">
-                      <thead>
-                        <tr>
-                          <th style="width:25%;">Office</th>
-                          <th style="width:25%;">Region</th>
-                          <th style="width:50%;">Other Info</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let name of office_names" (click)="goToOffice(name)">
-                          <td class="cell-detail"> <span>{{name}}</span><span class="cell-detail-description"></span>
-                          </td>
-                          <td class="cell-detail"><span>Asia-Pacific</span><span class="cell-detail-description"></span>
-                          </td>
-                          <td class="cell-detail"><span></span><span class="cell-detail-description"></span>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
       </div>
       <div class="col-12 col-lg-6">
         <app-map-widget>

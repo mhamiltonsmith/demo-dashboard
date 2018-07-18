@@ -17,7 +17,7 @@
                   </th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody *ngIf="office_data">
                 <tr *ngFor="let doc of office_data.travelDocs">
                   <td class="icon-kpi-value">{{doc.name}}</td>
                   <td>
