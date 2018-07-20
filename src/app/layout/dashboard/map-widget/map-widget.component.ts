@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { Router }              from '@angular/router';
-import { IntakeOffice }        from '../../../intake-office/IntakeOffice';
-import { IntakeOfficeService } from '../../../intake-office/intake-office.service';
+import { Router }        from '@angular/router';
+import { Office }        from '../../../office/Office';
+import { OfficeService } from '../../../office/office.service';
 
 declare var jvm: any;
 
@@ -15,19 +15,19 @@ declare var jvm: any;
 })
 export class MapWidgetComponent implements OnInit, OnDestroy {
 
-  private office_data:    IntakeOffice;
+  private office_data:    Office;
   private name:           string          = "Network";
-  private intake_offices: IntakeOffice[];
+  private offices:        Office[];
   public  makeMap:        any;
 
-  updateData(office_data: IntakeOffice) {
+  updateOffice(office_data: Office) {
     this.office_data = office_data;
   }
 
   getMarkers(): any {
     var markers = [];
-    for (var i in this.intake_offices) {
-      var office = this.intake_offices[i];
+    for (var i in this.offices) {
+      var office = this.offices[i];
       var params = {latLng: [office.lat, office.lng], name: office.name};
       markers.push(params);
     }
@@ -35,8 +35,8 @@ export class MapWidgetComponent implements OnInit, OnDestroy {
   }
 
 /** Function setFocusLatLng() sourced from https://stackoverflow.com/questions/14728371/jvector-map-how-to-focus-on-a-marker */
-  constructor( public router: Router, private intakeOfficeService: IntakeOfficeService ) { 
-    this.intake_offices = intakeOfficeService.getOffices();
+  constructor( public router: Router, private officeService: OfficeService ) { 
+    this.offices = officeService.getOffices();
     var lat:      number;
     var lng:      number;
     var selected: number[];
@@ -83,12 +83,10 @@ export class MapWidgetComponent implements OnInit, OnDestroy {
         },
         selectedMarkers: selected,
         onMarkerClick: function(event, code) {
-          console.log("Marker Clicked");
           router.navigate(['/network', markerList[code].name.toLowerCase()]);
           $('#region-map').vectorMap('get', 'mapObject').setFocusLatLng(7, lat, lng);
         },
         onRegionClick: function(event, code) {
-          console.log("Region Clicked");
           $('#region-map').vectorMap('set', 'focus', code);
         }
       });

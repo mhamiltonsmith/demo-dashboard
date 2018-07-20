@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { IntakeOffice } from '../../../intake-office/IntakeOffice';
+import { Metric } from '../../../office/Office';
 
 declare var numeral: any;
 
@@ -10,10 +10,10 @@ declare var numeral: any;
 })
 export class StatsBoxComponent implements OnInit {
 
-  private  office_data: IntakeOffice;
+  private  metric_data: Metric;
 
-  updateData(office_data: IntakeOffice) {
-    this.office_data = office_data;
+  updateMetric(metric_data: Metric) {
+    this.metric_data = metric_data;
   }
 
   constructor() { }

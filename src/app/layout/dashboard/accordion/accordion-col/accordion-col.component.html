@@ -1,5 +1,5 @@
-<h2 class="page-head-description" style="font-size:1.5rem;" [innerHTML]="travel_doc.name"></h2>
+<h2 class="page-head-description" style="font-size:1.5rem;" [innerHTML]="col_data.name"></h2>
 <div class="accordion">
-  <app-accordion-row *ngFor="let term of travel_doc.terms; let i = index" [term]="term" [chart_color]="chart_colors[i]" [doc_name]="travel_doc.name" [doc_names]="doc_names">
+  <app-accordion-row *ngFor="let row of col_data.terms; let i = index" [row_data]="row" [chart_color]="chart_colors[i]" [col_name]="col_data.name" [acc_name]="acc_name" [col_names]="col_names">
   </app-accordion-row>
 </div>

@@ -1,10 +1,11 @@
-import { Component, OnInit, AfterViewInit, Input, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, OnDestroy, ViewChild, Inject, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute }      from '@angular/router';
-import { IntakeOffice }        from '../../intake-office/IntakeOffice';
-import { IntakeOfficeService } from '../../intake-office/intake-office.service';
+import { Office }              from '../../office/Office';
+import { OfficeService }       from '../../office/office.service';
 import { LayoutService }       from '../layout.service';
+import { AccordionService }    from './accordion/accordion.service';
+import { StatsBoxService }     from './stats-box/stats-box.service';
 import { MapWidgetComponent }  from './map-widget/map-widget.component';
-import { ListBoxComponent }    from './list-box/list-box.component';
 import { StatsBoxComponent }   from './stats-box/stats-box.component';
 import { AccordionComponent }  from './accordion/accordion.component';
 
@@ -16,31 +17,40 @@ import { AccordionComponent }  from './accordion/accordion.component';
 })
 export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  public  title:       string        = "Dashboard";
-  public  name:        string        = "Global";
-  private office_data: IntakeOffice;
-  private sub:         any;
-  private has_office:  boolean       = false;
+  public  title:            string        = "Dashboard";
+  private office_data:      Office;
+  private sub:              any;
 
   @ViewChild(MapWidgetComponent) map_widget_component: MapWidgetComponent
-  @ViewChild(StatsBoxComponent)  stats_box_component:  StatsBoxComponent
-  @ViewChild(AccordionComponent) accordion_component:  AccordionComponent
+
+  @ViewChild('statsBox',  { read: ViewContainerRef }) statsBoxContainerRef: ViewContainerRef
+  @ViewChild('accordion', { read: ViewContainerRef }) accordionContainerRef: ViewContainerRef
 
   updateData() {
-    this.map_widget_component.updateData(this.office_data);
-    this.stats_box_component.updateData(this.office_data);
-    this.accordion_component.updateData(this.office_data);
+    this.map_widget_component.updateOffice(this.office_data);
     this.map_widget_component.makeMap();
   }
 
-  constructor(private intakeOfficeService: IntakeOfficeService, private layoutService: LayoutService, public route: ActivatedRoute) { }
+  constructor(
+      private accordionService:    AccordionService,
+      private statsBoxService:     StatsBoxService,
+      private officeService:       OfficeService,
+      private layoutService:       LayoutService,
+      public route:                ActivatedRoute
+    ) { this.accordionService = accordionService; }
 
   ngOnInit() {
     this.layoutService.updateTitle(this.title);
+    this.accordionService.setRootViewContainerRef(this.accordionContainerRef);
+    this.statsBoxService.setRootViewContainerRef(this.statsBoxContainerRef);
     this.sub = this.route.params.subscribe(params => { 
       var office_name = params['id'];
-      this.office_data = this.intakeOfficeService.getOffice(office_name);
+      this.office_data = this.officeService.getOffice(office_name);
       this.layoutService.updateTitle(this.title);
+      this.statsBoxContainerRef.clear();
+      this.accordionContainerRef.clear();
+      this.accordionService.addAccordionComponents(this.office_data.metrics);
+      this.statsBoxService.addStatsBoxComponents(this.office_data.metrics);
       this.updateData();
     });
   }
@@ -50,7 +60,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.updateData();
   }
 
 }

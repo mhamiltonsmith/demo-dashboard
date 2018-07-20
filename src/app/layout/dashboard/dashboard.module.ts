@@ -12,11 +12,12 @@ import { DashboardComponent }    from './dashboard.component';
 import { AccordionComponent }    from './accordion/accordion.component';
 import { AccordionColComponent } from './accordion/accordion-col/accordion-col.component';
 import { AccordionRowComponent } from './accordion/accordion-col/accordion-row/accordion-row.component';
+import { AccordionService }      from './accordion/accordion.service';
 import { StatsBoxComponent }     from './stats-box/stats-box.component';
+import { StatsBoxService }       from './stats-box/stats-box.service';
 import { TextBoxComponent }      from './text-box/text-box.component';
 import { ChangeWidgetModule }    from './change-widget/change-widget.module';
 import { MapWidgetComponent }    from './map-widget/map-widget.component';
-import { ListBoxComponent }      from './list-box/list-box.component';
 
 @NgModule({
   imports: [
@@ -33,11 +34,18 @@ import { ListBoxComponent }      from './list-box/list-box.component';
     AccordionComponent,
     StatsBoxComponent,
     TextBoxComponent,
-    MapWidgetComponent,
-    ListBoxComponent
+    MapWidgetComponent
   ],
   exports: [
     MapWidgetComponent
+  ],
+  providers: [
+    AccordionService,
+    StatsBoxService
+  ],
+  entryComponents: [
+    AccordionComponent,
+    StatsBoxComponent
   ]
 })
 export class DashboardModule { }

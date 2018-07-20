@@ -1,7 +1,8 @@
-<div id="accordion">
-  <div class="row">
-    <div class="col-12 col-sm-12 col-md-6 col-xl-4" *ngFor="let doc of office_data.travelDocs">
-      <app-accordion-col [travel_doc]="doc" [doc_names]="doc_names">
+<h2 *ngIf="accordion_data" class="page-head-title">{{accordion_data.name}}</h2>
+<div [attr.id]="getAccordionId()">
+  <div *ngIf="accordion_data" class="row">
+    <div class="col-12 col-sm-12 col-md-6 col-xl-4" *ngFor="let col_data of accordion_data.travelDocs">
+      <app-accordion-col [col_data]="col_data" [col_names]="col_names" [acc_name]="accordion_data.name">
       </app-accordion-col>
     </div>
   </div>

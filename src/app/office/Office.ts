@@ -1,9 +1,13 @@
-export class IntakeOffice {
+export class Office {
   id:   number;
   name: string;
-  map:  string;
   lat:  number;
   lng:  number;
+  metrics: Metric[]
+}
+
+export class Metric {
+  name: string;
   travelDocs: TravelDoc[];
 }
 

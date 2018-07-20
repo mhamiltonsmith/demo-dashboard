@@ -9,44 +9,47 @@ declare var numeral: any;
 })
 export class ChangeWidgetComponent implements OnInit {
 
-  @Input() term:      any;
-  numeral = numeral;
+  @Input() widget_data:      any;
 
-  getDifference(previous: number, current: number): number {
-    return (current - previous);
-  }
-  getPercentageChange(previous: number, current: number): number {
-    return (((current - previous)/previous)*100);
+  getFormattedCurrent() {
+    return numeral(this.widget_data.current).format('0.0a');
   }
 
-  isIncreasing(previous: number, current: number): boolean {
-    if (previous < current) {
+  getDifference(): number {
+    return (this.widget_data.current - this.widget_data.previous);
+  }
+  getPercentageChange(): number {
+    return (((this.widget_data.current - this.widget_data.previous)/this.widget_data.previous)*100);
+  }
+
+  isIncreasing(): boolean {
+    if (this.widget_data.previous < this.widget_data.current) {
       return true;
     } else {
       return false;
     }
   }
 
-  percentageChange(data): string {
-    var pChange = this.getPercentageChange(data.previous, data.current)
+  percentageChange(): string {
+    var pChange = this.getPercentageChange()
     if (pChange < 0) {
-      return " (" + numeral(this.getPercentageChange(data.previous, data.current)).format('0.0a') + "%)";
+      return " (" + numeral(pChange).format('0.0a') + "%)";
     } else {
-      return " (+" + numeral(this.getPercentageChange(data.previous, data.current)).format('0.0a') + "%)";
+      return " (+" + numeral(pChange).format('0.0a') + "%)";
     }
   }
 
-  amountChange(data): string {
-    var aChange = this.getDifference(data.previous, data.current)
+  amountChange(): string {
+    var aChange = this.getDifference()
     if (aChange < 0) {
-      return numeral(this.getDifference(data.previous, data.current)).format('0.a');
+      return numeral(aChange).format('0.a');
     } else {
-      return "+" + numeral(this.getDifference(data.previous, data.current)).format('0.a');
+      return "+" + numeral(aChange).format('0.a');
     }
   }
 
-  fontColor(data): string {
-    if (this.isIncreasing(data.previous, data.current)) {
+  fontColor(): string {
+    if (this.isIncreasing()) {
       return "green";
     } else {
       return "red";

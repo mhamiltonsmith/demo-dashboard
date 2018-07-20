@@ -1,9 +1,9 @@
 <div style="padding-left:25px; margin-top: 10px;">
-  <span class="number" id="valueA" style="font-size:1.6rem; font-weight:600;" [innerHTML]="numeral(term.current).format('0.0a')"></span>
-  <div class="desc" style="font-size:0.9rem;" [style.color]="fontColor(term)">
-    <span id="amountChange" [innerHTML]="amountChange(term)"></span>
-    <span id="percentageChange" [innerHTML]="percentageChange(term)"></span>
+  <span class="number" id="valueA" style="font-size:1.6rem; font-weight:600;" [innerHTML]="getFormattedCurrent()"></span>
+  <div class="desc" style="font-size:0.9rem;" [style.color]="fontColor()">
+    <span id="amountChange" [innerHTML]="amountChange()"></span>
+    <span id="percentageChange" [innerHTML]="percentageChange()"></span>
   </div>
 </div>
-<app-arrows-widget [directionUp]="isIncreasing(term.previous, term.current)">
+<app-arrows-widget [directionUp]="isIncreasing()">
 </app-arrows-widget>
