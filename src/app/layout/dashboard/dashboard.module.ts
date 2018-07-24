@@ -18,12 +18,14 @@ import { StatsBoxService }       from './stats-box/stats-box.service';
 import { TextBoxComponent }      from './text-box/text-box.component';
 import { ChangeWidgetModule }    from './change-widget/change-widget.module';
 import { MapWidgetComponent }    from './map-widget/map-widget.component';
+import { EsriMapModule }         from '../esri-map/esri-map.module';
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardRoutingModule,
     ChangeWidgetModule,
+    EsriMapModule,
     ChartsModule,
     SparklineModule
   ],

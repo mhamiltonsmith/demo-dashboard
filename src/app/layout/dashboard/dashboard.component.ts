@@ -8,6 +8,7 @@ import { StatsBoxService }     from './stats-box/stats-box.service';
 import { MapWidgetComponent }  from './map-widget/map-widget.component';
 import { StatsBoxComponent }   from './stats-box/stats-box.component';
 import { AccordionComponent }  from './accordion/accordion.component';
+import { EsriMapComponent }    from '../esri-map/esri-map.component';
 
 @Component({
   selector:    'app-dashboard',
@@ -21,14 +22,12 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   private office_data:      Office;
   private sub:              any;
 
-  @ViewChild(MapWidgetComponent) map_widget_component: MapWidgetComponent
+  @ViewChild(EsriMapComponent) esri_map_component: EsriMapComponent
 
   @ViewChild('statsBox',  { read: ViewContainerRef }) statsBoxContainerRef: ViewContainerRef
   @ViewChild('accordion', { read: ViewContainerRef }) accordionContainerRef: ViewContainerRef
 
   updateData() {
-    this.map_widget_component.updateOffice(this.office_data);
-    this.map_widget_component.makeMap();
   }
 
   constructor(
@@ -51,7 +50,6 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
       this.accordionContainerRef.clear();
       this.accordionService.addAccordionComponents(this.office_data.metrics);
       this.statsBoxService.addStatsBoxComponents(this.office_data.metrics);
-      this.updateData();
     });
   }
 
